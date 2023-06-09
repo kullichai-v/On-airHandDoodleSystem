@@ -1,0 +1,40 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="{% static 'styles/style5.css' %}">
+    
+</head>
+<body>
+    <section style="background-image: url({% static 'images/background.jpg' %});">
+        <div class="form-container">
+           <h4>FORGOT</h4>
+	<form method="post">
+	{% csrf_token %}
+            <div class="control">
+            <label for="user" class="label">Ration Card No</label>
+            <input id="user" type="text" class="input" placeholder="Enter RC no" name="rationcardno">
+            <div class="control">
+<select name="s1">
+<option value='hint'> Hint Question:</option>
+<option value='color'>Your favorite color</option>
+<option value='name'>Your first Pet Name</option>
+<option value='nick'>Your nickname</option> 
+<option value='mother'>Your mother born year</option> 
+<option value='siblings'>How many siblings you have</option>
+</select>
+<input id="user" type="text" class="input" placeholder="Enter the Answer" name="secretpass">
+ </div>
+<div class="control">
+<input type="submit" value="submit">
+</div>
+<div class="control">
+<a href="/login"><input type="button" value="login">
+</div>
+</form>
+</div>
+</section>
+</body>
+</html>

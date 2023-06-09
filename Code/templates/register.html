@@ -1,0 +1,49 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport content="width=device-width, initial-scale=1.0">
+    <title>On air hand doodle system</title>
+    <link rel="stylesheet" href="{% static 'styles/style3.css' %}">
+<body>
+<section style="background-image: url({% static 'images/background.jpg' %});">
+        <div class="form-container">
+<form name="regform" method="post">
+{% csrf_token %}
+ <div class="control">
+<label for="fname">First Name</label>
+<input type="text"  name="firstname" placeholder="Enter First Name" id="contact-name">
+</div>
+ <div class="control">
+<label for="lname">Last Name</label>
+<input type="text" name="lastname" placeholder="Enter Last Name" >
+</div>
+ <div class="control">
+<label for="rcno">Ration Card No</label>
+<input type="text" name="rationcardno" placeholder="Enter Ration Card Number" id="contact-rcno">
+</div>
+ <div class="control">
+<label for="phno">Phone Number</label>
+<input type="tel" name="phno" placeholder="Enter Phone Number" id="contact-phone">
+</div>
+<div class="control">
+<select name="s1">
+<option value='hint'> Hint Question:</option>
+<option value='color'>Your favorite color</option>
+<option value='name'>Your first Pet Name</option>
+<option value='nick'>Your nickname</option> 
+<option value='mother'>Your mother born year</option> 
+<option value='sibling'>How many siblings you have</option>
+</select>
+
+<input type="tel" name="secretpass" placeholder="Enter the answer">
+</div>
+<div class="control">
+<input type="submit" value="submit">
+<input type="reset" value="reset">
+<a href="/login"><input type="button" value="login">
+</div>
+</form>
+</section>
+</body>
+</html>

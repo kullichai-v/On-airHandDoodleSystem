@@ -1,0 +1,40 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport content="width=device-width, initial-scale=1.0">
+    <title>On air hand doodle system</title>
+
+    <link rel="stylesheet" href="{% static 'styles/style4.css' %}">
+<body>
+
+ <section style="background-image: url({% static 'images/background.jpg' %});">
+{% if login_req == True %}
+        <div class="form-container">
+        <h1><marquee direction="top">ON-AIR HAND DOODLE SYSTEM</marquee></h1>
+	<form action="#">
+            <div class="control">
+            
+            
+           <a href="/login"><input type="button" name="action" value="login"/>
+           <a href="/register"><input type="button" name="action" value="Register" />
+          </div>
+          </div>
+              
+{% endif %}
+
+{% if login_req == False %}
+             <div class="popup">
+    <h2>Please speak for 5 seconds after Clicking on Start Recording</h2>
+
+             <div class="control">
+            <form method="get"> 
+    <a href=""><input type="button" name="record" value="Start Recording"/> </a>        
+</div>
+            
+</div>
+
+            {% endif %}
+           
+</body>  
+</html>  

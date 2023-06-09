@@ -1,0 +1,153 @@
+{% load static %}
+<html lang="en">
+<head>
+ <title>Profile</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: #ddd;
+        align-items: center;
+        justify-content: center;
+    }
+
+    *{
+        box-sizing: border-box;
+    }
+
+    .container{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 20px 20px;
+    }
+    .control input[type="submit"]{
+         background: crimson;
+          color: #fff;
+          text-transform: uppercase;
+          font-size:1.2em;
+          opacity: .7;
+          transition: opacity .3s ease;
+    }
+    .control input[type="submit"]:hover{
+      opacity: 1;
+    }
+
+    .box{
+        flex: 30%;
+        display: table;
+        align-items: center;
+        text-align: center;
+        font-size: 10px;
+        background-color:black;
+        color: #fff;
+        padding: 30px 30px;
+        border-radius: 20px;
+    }
+
+    .box img{
+        border-radius: 50%;
+        border: 2px solid #fff;
+        height: 200px;
+        width: 200px;
+    }
+
+    .box ul{
+        margin-top: 30px;
+        font-size: 30px;
+        text-align: center;
+    }
+    .box ul li{
+        list-style: none;
+        margin-top: 50px;
+        font-weight: 100;
+        font-size:20px;
+        font-weight: 500;
+        text-align: center;
+    }
+.box ul li a{
+        font-size:20px;
+        font-weight: 500;
+        text-align: right;
+}
+    .About{
+        margin-left: 20px;
+        flex: 50%;
+        display: table;
+        padding: 30px 30px;
+        font-size: 20px;
+        background-color: #fff;
+        border-radius: 20px;
+    }
+
+    .About h3{
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 50px;
+        font-weight: 500;
+    }
+
+    .About ul li{
+        list-style: none;
+    }
+
+    .About ul{
+        margin-top: 20px;
+    }
+        @media screen and (max-width: 1068px) {
+        .container{
+            display: table;
+        }
+
+        .box{
+            width: 100%;
+        }
+
+        .About{
+            width: 100%;
+            margin: 0;
+            margin-top: 20px;
+        }
+
+        .About h3{
+            text-align: center;
+        }
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="box">
+            <img src="{% static 'images/profile_photo.jpeg' %}" alt="Profile Photo">
+            <ul>
+                <li>{{ request.session.first_name }}</li>
+                <li>{{ request.session.phone_number }} </li>
+                <li><a href="/password"><u>Change Password</u></a></li>
+            </ul>
+        </div>
+        <div class="About">
+            <ul>
+                <h4>Ration Card number: {{ request.session.ration_card }}</h4> 
+                <h3>Ration Details</h3>
+                <table>
+                {% if 'logged_in' in request.session %} {% for x in ration_details %}
+<tr>
+  <td style="padding: 25px">
+    {{ x.received_date }}
+  </td>
+  <tr>
+    {% endfor %} {% endif %}
+                </table>
+                
+            </ul>
+            <form method="POST">
+            {% csrf_token %}
+            <div class="control">
+                <a href="/"><input type="submit" value="Ration" name="ration">
+             </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
